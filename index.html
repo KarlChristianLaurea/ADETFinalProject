@@ -3,16 +3,117 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UlamAlam</title>
+    <title>Landing Page</title>
     <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+      * {
+        font-family: 'Poppins', sans-serif;
+      }
+      h1 {
+        font-size: 60px;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .card {
+        background-image: url('bg.jpg');
+        background-size: cover;
+        background-position: center;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        height: 100vh;
+        color: white;
+      }
+      .navbar-brand img {
+        max-height: 30px;
+        margin-right: 10px;
+      }
+      .about {
+        width: 80%;
+        margin: auto;
+        text-align: center;
+        justify-content: center;
+        padding-top: 100px;
+      }
+      .about h2 {
+        font-size: 36px;
+        font-weight: 600;
+        color: #e09c00;
+      }
+
+      .about p {
+        font-size: 14px;
+        font-weight: 300;
+        line-height: 22px;
+        padding: 10px;
+      }
+
+      .row {
+        margin-top: 5%;
+        display: flex;
+        justify-content: space-between;
+      }
+      .course-col {
+        flex-basis: 31%;
+        background: #fff3f3;
+        border-radius: 10px;
+        margin-bottom: 5%;
+        padding: 20px 12px;
+        box-sizing: border-box;
+        transition: 0.5s;
+      }
+      .h3 {
+        text-align: center;
+        font-weight: 600;
+        margin: 10px 0;
+      }
+      .course-col:hover {
+        box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
+      }
+      .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000; /* Ensures the navbar stays above other content */
+      }
+      .contact {
+        display: grid;
+        width: 90%;
+        margin: auto;
+        text-align: center;
+        padding-top: 100px;
+      }
+      .contact h2 {
+        font-size: 36px;
+        font-weight: 600;
+        color: #e09c00;
+      }
+      .contact-col {
+        flex-basis: 31%;
+        border-radius: 10px;
+        margin-bottom: 5%;
+        text-align: left;
+      }
+      .contact-col img {
+        width: 300px; /* Fixed width */
+        height: 300px; /* Fixed height */
+        border-radius: 10px;
+        object-fit: cover; /* Ensures the image covers the area while maintaining aspect ratio */
+      }
+    </style>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">UlamAlam</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+      <a class="navbar-brand" href="options.html">
+        <img src="logo.png" alt="UlamAlam Logo" /> UlamAlam
+      </a>
       <button
         class="navbar-toggler"
         type="button"
@@ -32,282 +133,146 @@
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
+            <a class="nav-link" href="#about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link disabled"
-              href="#"
-              tabindex="-1"
-              aria-disabled="true"
-              >Disabled</a
-            >
+            <a class="nav-link" href="#contact">Contact</a>
           </li>
         </ul>
       </div>
     </nav>
-    <section id="recipe-form">
-      <h2>Generate Your Ulam Recipe</h2>
-      <form id="ulamForm">
-        <fieldset>
-          <legend>Protein</legend>
-          <div class="protein-container">
-            <label>
-              <input type="checkbox" name="protein" value="Chicken" /> Chicken
-              <img
-                src="/ingredients/chicken.jpg"
-                alt="Chicken"
-                class="food-img"
-                data-food="Chicken"
-              />
-            </label>
-            <label>
-              <input type="checkbox" name="protein" value="Beef" /> Beef
-              <img
-                src="/ingredients/beef.jpg"
-                alt="Beef"
-                class="food-img"
-                data-food="Beef"
-              />
-            </label>
-            <label>
-              <input type="checkbox" name="protein" value="Pork" /> Pork
-              <img
-                src="/ingredients/pork.jpg"
-                alt="Pork"
-                class="food-img"
-                data-food="Pork"
-              />
-            </label>
-            <label>
-              <input type="checkbox" name="protein" value="Fish" /> Fish
-              <img
-                src="/ingredients/fish.jpg"
-                alt="Fish"
-                class="food-img"
-                data-food="Fish"
-              />
-            </label>
-            <label>
-              <input type="checkbox" name="protein" value="Shrimp" /> Shrimp
-              <img
-                src="/ingredients/shrimp.jpg"
-                alt="Shrimp"
-                class="food-img"
-                data-food="Shrimp"
-              />
-            </label>
-            <label>
-              <input type="checkbox" name="protein" value="Tofu" /> Tofu
-              <img
-                src="/ingredients/tofu.jpg"
-                alt="Tofu"
-                class="food-img"
-                data-food="Tofu"
-              />
-            </label>
-            <label>
-              <input type="checkbox" name="protein" value="Eggs" /> Eggs
-              <img
-                src="/ingredients/egg.jpg"
-                alt="Eggs"
-                class="food-img"
-                data-food="Eggs"
-              />
-            </label>
-            <label>
-              <input type="checkbox" name="protein" value="Cheese" /> Cheese
-              <img
-                src="/ingredients/cheese.jpg"
-                alt="Cheese"
-                class="food-img"
-                data-food="Cheese"
-              />
-            </label>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Vegetables</legend>
-          <div class="vegetables-container">
-            <label>
-              <input type="checkbox" name="vegetables" value="Carrots" />
-              Carrots
-              <img
-                src="/ingredients/carrots.jpg"
-                alt="Carrots"
-                class="food-img"
-                data-food="Carrots"
-              />
-            </label>
-            <label>
-              <input type="checkbox" name="vegetables" value="Peppers" />
-              Peppers
-              <img
-                src="/ingredients/peppers.jpg"
-                alt="Peppers"
-                class="food-img"
-                data-food="Peppers"
-              />
-            </label>
-            <label>
-              <input type="checkbox" name="vegetables" value="Mushrooms" />
-              Mushrooms
-              <img
-                src="/ingredients/mushrooms.jpg"
-                alt="Mushrooms"
-                class="food-img"
-                data-food="Mushrooms"
-              />
-            </label>
-            <label>
-              <input type="checkbox" name="vegetables" value="Onions" /> Onions
-              <img
-                src="/ingredients/onions.jpg"
-                alt="Onions"
-                class="food-img"
-                data-food="Onions"
-              />
-            </label>
-            <label>
-              <input type="checkbox" name="vegetables" value="Tomatoes" />
-              Tomatoes
-              <img
-                src="/ingredients/tomatoes.jpg"
-                alt="Tomatoes"
-                class="food-img"
-                data-food="Tomatoes"
-              />
-            </label>
-            <label>
-              <input type="checkbox" name="vegetables" value="Cabbage" />
-              Cabbage
-              <img
-                src="/ingredients/cabbage.jpg"
-                alt="Cabbage"
-                class="food-img"
-                data-food="Cabbage"
-              />
-            </label>
-            <label>
-              <input type="checkbox" name="vegetables" value="Potatoes" />
-              Potatoes
-              <img
-                src="/ingredients/potatoes.jpg"
-                alt="Potatoes"
-                class="food-img"
-                data-food="Potatoes"
-              />
-            </label>
-            <label>
-              <input type="checkbox" name="vegetables" value="Eggplant" />
-              Eggplant
-              <img
-                src="/ingredients/eggplant.jpg"
-                alt="Eggplant"
-                class="food-img"
-                data-food="Eggplant"
-              />
-            </label>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Condiments</legend>
-          <div class="condiments-container">
-            <label>
-              <input type="checkbox" name="condiments" value="Soy Sauce" /> Soy
-              Sauce
-              <img
-                src="/ingredients/soy sauces.jpg"
-                alt="Soy Sauce"
-                class="food-img"
-                data-food="Soy Sauce"
-              />
-            </label>
-            <label>
-              <input type="checkbox" name="condiments" value="Vinegar" />
-              Vinegar
-              <img
-                src="/ingredients/vinegar.jpg"
-                alt="Vinegar"
-                class="food-img"
-                data-food="Vinegar"
-              />
-            </label>
-            <label>
-              <input type="checkbox" name="condiments" value="Ketchup" />
-              Ketchup
-              <img
-                src="/ingredients/ketchup.jpg"
-                alt="Ketchup"
-                class="food-img"
-                data-food="Ketchup"
-              />
-            </label>
-            <label>
-              <input type="checkbox" name="condiments" value="Mustard" />
-              Mustard
-              <img
-                src="/ingredients/mustard.jpg"
-                alt="Mustard"
-                class="food-img"
-                data-food="Mustard"
-              />
-            </label>
-            <label>
-              <input type="checkbox" name="condiments" value="Fish Sauce" />
-              Fish Sauce
-              <img
-                src="/ingredients/fish sauce.jpg"
-                alt="Fish Sauce"
-                class="food-img"
-                data-food="Fish Sauce"
-              />
-            </label>
-            <label>
-              <input type="checkbox" name="condiments" value="Mayonnaise" />
-              Mayonnaise
-              <img
-                src="/ingredients/mayonnaise.jpg"
-                alt="Mayonnaise"
-                class="food-img"
-                data-food="Mayonnaise"
-              />
-            </label>
-            <label>
-              <input type="checkbox" name="condiments" value="Hot Sauce" /> Hot
-              Sauce
-              <img
-                src="/ingredients/hot sauce.jpg"
-                alt="Hot Sauce"
-                class="food-img"
-                data-food="Hot Sauce"
-              />
-            </label>
-            <label>
-              <input type="checkbox" name="condiments" value="Oyster Sauce" />
-              Oyster Sauce
-              <img
-                src="/ingredients/oyster sauce.png"
-                alt="Oyster Sauce"
-                class="food-img"
-                data-food="Oyster Sauce"
-              />
-            </label>
-          </div>
-        </fieldset>
-        <div class="d-flex justify-content-center">
-          <button type="submit" class="btn btn-warning btn-md">
-            Generate Recipe
-          </button>
+
+    <div class="card">
+      <h1><strong>UlamAlam</strong></h1>
+      <img src="Logo.png" />
+      <p>
+        A Filipino Recipe Recommendation System Aligned with Ingredient
+        Availability
+      </p>
+      <div class="text-center mt-4">
+        <button
+          type="button"
+          class="btn btn-dark"
+          onclick="location.href='options.html'"
+        >
+          Generate Filipino Ulam Ideas
+        </button>
+      </div>
+    </div>
+    <section id="about" class="about">
+      <h2>About</h2>
+      <p>INTRODUCTION</p>
+      <div class="row">
+        <div class="course-col">
+          <h3>Purpose of Document</h3>
+          <p>
+            UlamAlam is a web-based application that aims to help students who
+            are having a hard time in thinking about what dish they are going to
+            cook in their dormitories. This application would help recommend
+            Filipino dishes from the selected ingredients options and what
+            recipe can be used for cooking. This would be beneficial for those
+            students who lack knowledge of cooking, and those students who are
+            having a hard time thinking what meal they are going to eat. Having
+            this application would provide student knowledge at the same time
+            enhance their cooking skills.
+          </p>
         </div>
-      </form>
-      <div id="recipeResult"></div>
+        <div class="course-col">
+          <h3>Project Scope</h3>
+          <p>
+            UlamAlam is a web-based application aimed at streamlining meal
+            planning and enhancing cooking skills for students residing in
+            dormitories by offering personalized Filipino dish suggestions based
+            on the ingredients they have available. This initiative seeks to
+            resolve the common issue of meal indecision and acts as an
+            educational resource that introduces a variety of Filipino cuisines
+            and culinary methods. The project's objectives include crafting a
+            user-friendly interface for ingredient selection, building a
+            comprehensive database of Filipino recipes with detailed cooking
+            instructions and nutritional facts, updating ingredient availability
+            in real time to ensure accurate dish recommendations, and providing
+            educational content about the cultural significance and history of
+            each dish to promote a deeper appreciation for Filipino cuisine.
+          </p>
+        </div>
+        <div class="course-col">
+          <h3>Limitations</h3>
+          <p>
+            Several limitations may impact the recipe suggestion application.
+            Inaccurate ingredient availability data can lead to incorrect
+            recommendations. A limited collection of Filipino recipes might
+            result in repetitive suggestions. Users, especially students, may
+            become overly dependent on the app, hindering their cooking skills
+            development. Technical issues like glitches, crashes, or server
+            outages can affect usability. Privacy and data security concerns may
+            arise if user data is mishandled. Unappetizing recipe suggestions
+            can reduce user interaction. Performance issues, such as slow
+            response times during high usage, can impact system efficiency.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <p>lorem ipsum</p>
+      <div class="row">
+        <div class="col-md-3 contact-col">
+          <img src="aaron.jpg" />
+          <h3>Charwynn Apolinar</h3>
+          <p>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum."
+          </p>
+        </div>
+        <div class="col-md-3 contact-col">
+          <img src="karl.jpg" />
+          <h3>Karl Laurea</h3>
+          <p>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum."
+          </p>
+        </div>
+        <div class="col-md-3 contact-col">
+          <img src="rainer.jpg" />
+          <h3>Rainer Magnaye</h3>
+          <p>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum."
+          </p>
+        </div>
+        <div class="col-md-3 contact-col">
+          <img src="aldrich.jpg" />
+          <h3>Aldrich Perez</h3>
+          <p>
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum."
+          </p>
+        </div>
+      </div>
     </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </body>
 </html>

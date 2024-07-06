@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UlamAlam</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Modal Start -->
+    <div class="modal fade" id="instructionsModal" tabindex="-1" role="dialog" aria-labelledby="instructionsModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="instructionsModalLabel">Instructions</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Welcome to UlamAlam! Select at least one ingredient per category (protein, vegetables, condiments) based on your taste to generate delicious Filipino recipes. Feel free to choose more than one ingredient per category. Enjoy exploring our flavors!</p>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal End -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+      <a class="navbar-brand" href="options.html">
+        <img src="logo.png" alt="UlamAlam Logo" /> UlamAlam
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <section id="recipe-form" class="container mt-5">
+      <h2 class="text-center mb-4">Generate Your Ulam Recipe</h2>
+      <form id="ulamForm">
+        <div class="row mb-3">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <fieldset>
+                  <legend>Protein</legend>
+                  <div class="protein-container">
+                    <label>
+                      <input type="checkbox" name="protein" value="Chicken" />
+                      Chicken
+                      <img
+                        src="/ingredients/chicken.jpg"
+                        alt="Chicken"
+                        class="food-img"
+                        data-food="Chicken"
+                      />
+                    </label>
+                    <label>
+                      <input type="checkbox" name="protein" value="Beef" /> Beef
+                      <img
+                        src="/ingredients/beef.jpg"
+                        alt="Beef"
+                        class="food-img"
+                        data-food="Beef"
+                      />
+                    </label>
+                    <label>
+                      <input type="checkbox" name="protein" value="Pork" /> Pork
+                      <img
+                        src="/ingredients/pork.jpg"
+                        alt="Pork"
+                        class="food-img"
+                        data-food="Pork"
+                      />
+                    </label>
+                    <label>
+                      <input type="checkbox" name="protein" value="Fish" /> Fish
+                      <img
+                        src="/ingredients/fish.jpg"
+                        alt="Fish"
+                        class="food-img"
+                        data-food="Fish"
+                      />
+                    </label>
+                    <label>
+                      <input type="checkbox" name="protein" value="Shrimp" />
+                      Shrimp
+                      <img
+                        src="/ingredients/shrimp.jpg"
+                        alt="Shrimp"
+                        class="food-img"
+                        data-food="Shrimp"
+                      />
+                    </label>
+                    <label>
+                      <input type="checkbox" name="protein" value="Tofu" /> Tofu
+                      <img
+                        src="/ingredients/tofu.jpg"
+                        alt="Tofu"
+                        class="food-img"
+                        data-food="Tofu"
+                      />
+                    </label>
+                    <label>
+                      <input type="checkbox" name="protein" value="Eggs" /> Eggs
+                      <img
+                        src="/ingredients/egg.jpg"
+                        alt="Eggs"
+                        class="food-img"
+                        data-food="Eggs"
+                      />
+                    </label>
+                    
+                    
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <fieldset>
+                  <legend>Vegetables</legend>
+                  <div class="vegetables-container">
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="vegetables"
+                        value="Carrots"
+                      />
+                      Carrots
+                      <img
+                        src="/ingredients/carrots.jpg"
+                        alt="Carrots"
+                        class="food-img"
+                        data-food="Carrots"
+                      />
+                    </label>
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="vegetables"
+                        value="Peppers"
+                      />
+                      Peppers
+                      <img
+                        src="/ingredients/peppers.jpg"
+                        alt="Peppers"
+                        class="food-img"
+                        data-food="Peppers"
+                      />
+                    </label>
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="vegetables"
+                        value="Mushrooms"
+                      />
+                      Mushrooms
+                      <img
+                        src="/ingredients/mushrooms.jpg"
+                        alt="Mushrooms"
+                        class="food-img"
+                        data-food="Mushrooms"
+                      />
+                    </label>
+                    <label>
+                      <input type="checkbox" name="vegetables" value="Onions" />
+                      Onions
+                      <img
+                        src="/ingredients/onions.jpg"
+                        alt="Onions"
+                        class="food-img"
+                        data-food="Onions"
+                      />
+                    </label>
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="vegetables"
+                        value="Tomatoes"
+                      />
+                      Tomatoes
+                      <img
+                        src="/ingredients/tomatoes.jpg"
+                        alt="Tomatoes"
+                        class="food-img"
+                        data-food="Tomatoes"
+                      />
+                    </label>
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="vegetables"
+                        value="Cabbage"
+                      />
+                      Cabbage
+                      <img
+                        src="/ingredients/cabbage.jpg"
+                        alt="Cabbage"
+                        class="food-img"
+                        data-food="Cabbage"
+                      />
+                    </label>
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="vegetables"
+                        value="Potatoes"
+                      />
+                      Potatoes
+                      <img
+                        src="/ingredients/potatoes.jpg"
+                        alt="Potatoes"
+                        class="food-img"
+                        data-food="Potatoes"
+                      />
+                    </label>
+                    
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <fieldset>
+                  <legend>Condiments</legend>
+                  <div class="condiments-container">
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="condiments"
+                        value="Soy Sauce"
+                      />
+                      Soy Sauce
+                      <img
+                        src="/ingredients/soy sauces.jpg"
+                        alt="Soy Sauce"
+                        class="food-img"
+                        data-food="Soy Sauce"
+                      />
+                    </label>
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="condiments"
+                        value="Vinegar"
+                      />
+                      Vinegar
+                      <img
+                        src="/ingredients/vinegar.jpg"
+                        alt="Vinegar"
+                        class="food-img"
+                        data-food="Vinegar"
+                      />
+                    </label>
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="condiments"
+                        value="Ketchup"
+                      />
+                      Ketchup
+                      <img
+                        src="/ingredients/ketchup.jpg"
+                        alt="Ketchup"
+                        class="food-img"
+                        data-food="Ketchup"
+                      />
+                    </label>
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="condiments"
+                        value="Black Pepper"
+                      />
+                      Black Pepper
+                      <img
+                        src="/ingredients/black pepper.jpg"
+                        alt="Mustard"
+                        class="food-img"
+                        data-food="Mustard"
+                      />
+                    </label>
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="condiments"
+                        value="Fish Sauce"
+                      />
+                      Fish Sauce
+                      <img
+                        src="/ingredients/fish sauce.jpg"
+                        alt="Fish Sauce"
+                        class="food-img"
+                        data-food="Fish Sauce"
+                      />
+                    </label>
+                    <label>
+                      <input
+                        type="checkbox"
+                        name="condiments"
+                        value="Mayonnaise"
+                      />
+                      Mayonnaise
+                      <img
+                        src="/ingredients/mayonnaise.jpg"
+                        alt="Mayonnaise"
+                        class="food-img"
+                        data-food="Mayonnaise"
+                      />
+                    </label>
+                    <label>
+                      <input type="checkbox" name="condiments" value="Salt" />
+                      Salt
+                      <img
+                        src="/ingredients/salt.jpg"
+                        alt="Salt"
+                        class="food-img"
+                        data-food="Salt"
+                      />
+                    </label>
+                    
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-dark">Generate Recipe</button>
+        </div>
+      </form>
+    </section>
+  
+    </section>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
