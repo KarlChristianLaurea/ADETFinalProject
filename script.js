@@ -2,6 +2,27 @@ const form = document.getElementById('ulamForm');
 const appId = '7bbed00a';
 const appKey = 'a2105e1880cf3fc83ecd540145106105';
 
+document.addEventListener('DOMContentLoaded', function () {
+  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  const images = document.querySelectorAll('img.food-img');
+
+  checkboxes.forEach((checkbox, index) => {
+    checkbox.addEventListener('change', function () {
+      const image = images[index];
+      if (this.checked) {
+        image.classList.add('selected');
+        console.log('Image is selected:', image.src);
+      } else {
+        image.classList.remove('selected');
+      }
+    });
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  $('#instructionsModal').modal('show');
+});
+
 form.addEventListener('submit', function (event) {
   event.preventDefault();
 
@@ -54,50 +75,63 @@ form.addEventListener('submit', function (event) {
         return;
       }
 
-      const newTab = window.open('', '_blank');
+      const newTab = window.open('', '_self');
       newTab.document.write(`
         <html>
           <head>
             <title>Recipe Suggestions</title>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
             <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+              *{
+            font-family:"Poppins",sans-serif;
+              }
               body {
-                font-family: Arial, sans-serif;
+                font-family:"Poppins",sans-serif;
+                background-color: #fff4d7;
                 padding: 20px;
               }
               #recipeResult {
-              display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-              grid-template-columns: repeat(4, 1fr); /* Ensure only up to 4 items per row */
-              grid-gap: 10px;
-              max-height: 90vh; /* Limit to 90% of the viewport height */
-              overflow-y: auto;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                grid-gap: 10px;
+                max-height: 90vh;
+                overflow-y: auto;
+                background-color: #fff4d7;
               }
-
-              .recipe-option {
-                background-color: #f5f5f5;
+                .recipe-option {
+    height: 350px; /* Adjust the height as needed */
+    overflow: hidden; /* Ensure content does not overflow the card */
+  }
+  .recipe-option img {
+    height: 200px; /* Adjust the height of the image */
+    object-fit: cover; /* Ensure the image covers the specified height without distortion */
+  }
+  .recipe-option h3 {
+    margin: 10px 0;
+    height: 50px; /* Adjust height to ensure consistency in card layout */
+    overflow: hidden; /* Prevent title overflow */
+    text-overflow: ellipsis; /* Add ellipsis if title overflows */
+    white-space: nowrap; /* Prevent text from wrapping */
+  }
+              .card {
+                background-color: #fff;
                 padding: 20px;
                 border-radius: 5px;
                 text-align: center;
-                justify-content: center;
-                align-items: center;
               }
-              .recipe-option button {
-                all: unset;
-                cursor: pointer;
-                width: 100%;
-                text-align: center;
-              }
-              .recipe-option img {
+              .card img {
                 margin-bottom: 10px;
                 width: 100%;
-                height: 100%;
+                height: auto;
               }
               #recipeDetailsContainer {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              width: 100%;
-              margin: 20px 0;
+                display: grid;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                margin-top: 40px; 
               }
               #recipeDetails {
                 display: grid;
@@ -105,16 +139,15 @@ form.addEventListener('submit', function (event) {
                 grid-gap: 20px;
                 max-width: 800px;
                 width: 100%;
-                background-color: black;
+                background-color: #fff;
                 padding: 20px;
                 border-radius: 10px;
               }
               .recipe-info {
-                background-color: yellow;
+                background-color: #fff;
                 padding: 10px;
               }
               .image-buttons {
-                background-color: red;
                 padding: 10px;
               }
               .image-buttons img {
@@ -139,29 +172,41 @@ form.addEventListener('submit', function (event) {
               .buttons button:hover {
                 background-color: #45a049;
               }
+              h2{
+              font-family:"Poppins",sans-serif;
+              font-weight: bold;
+              color: #e09c00;
+              }
             </style>
           </head>
           <body>
-            <h2>Select a Recipe</h2>
-            <div id="recipeResult">
+            <h2 class="text-center mb-4">Select a Recipe</h2>
+            <div id="recipeResult" class="container">
+              <div class="row">
       `);
 
       recipes.forEach((recipe) => {
         newTab.document.write(`
-          <div class="recipe-option">
-            <button onclick="showRecipeDetails('${encodeURIComponent(
-              JSON.stringify(recipe)
-            )}')">
-              <h3>${recipe.label}</h3>
-              <img src="${recipe.image}" alt="${recipe.label}"/>
-            </button>
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <img src="${recipe.image}" class="card-img-top" alt="${
+          recipe.label
+        }">
+              <div class="card-body">
+                <h5 class="card-title">${recipe.label}</h5>
+                <button class="btn btn-success" onclick="showRecipeDetails('${encodeURIComponent(
+                  JSON.stringify(recipe)
+                )}')">View Recipe</button>
+              </div>
+            </div>
           </div>
         `);
       });
 
       newTab.document.write(`
+              </div>
             </div>
-            <div id="recipeDetailsContainer">
+            <div id="recipeDetailsContainer" class="container">
               <div id="recipeDetails"></div>
             </div>
             <script>
@@ -172,7 +217,7 @@ form.addEventListener('submit', function (event) {
                 recipeInfo.classList.add('recipe-info');
                 const instructions = decodedRecipeData.instructions
                   ? decodedRecipeData.instructions
-                  : \`<a href="https://www.google.com/search?q=\${encodeURIComponent(decodedRecipeData.label + ' recipe')}" target="_blank">Search for step-by-step instructions</a>\`;
+                  : \`<a href="https://www.google.com/search?q=\${encodeURIComponent(decodedRecipeData.label + ' step by step instructions')}" target="_blank">Search for step-by-step instructions</a>\`;
 
                 recipeInfo.innerHTML = \`
                   <h2>\${decodedRecipeData.label}</h2>
@@ -193,10 +238,11 @@ form.addEventListener('submit', function (event) {
                 const imageButtons = document.createElement('div');
                 imageButtons.classList.add('image-buttons');
                 imageButtons.innerHTML = \`
-                  <img src="\${decodedRecipeData.image}" alt="\${decodedRecipeData.label}" style="width:100%;height:auto;"/>
-                  <div class="buttons">
-                    <button onclick="window.history.back()">Select Another Recipe</button>
-                    <button onclick="window.close()">Go Back to Home</button>
+                  <img src="\${decodedRecipeData.image}" alt="\${decodedRecipeData.label}" class="img-fluid"/>
+                  <div class="buttons mt-3">
+                    <button class="btn btn-primary" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">Select Another Recipe</button>
+<button class="btn btn-secondary" onclick="window.location.href = 'index.html'">Go Back to Home</button>
+
                   </div>
                 \`;
 
